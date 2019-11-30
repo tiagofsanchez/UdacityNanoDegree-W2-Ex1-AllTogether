@@ -14,16 +14,16 @@ The instructions for this project are located in the `instructions.md` file.
 */
 
 class App extends Component {
-  
+
   state = {
-  	users: []
+    users: []
   }
-  
 
-storeUserHandler = (user) => {
-	this.setSate( prevState => ({users:[...prevState.users,user] }) )
 
-}
+  storeUserHandler = user => {
+    this.setSate(prevState => ({ users: [...prevState.users, user] })).bind(this)
+
+  }
 
   render() {
     return (
@@ -32,7 +32,7 @@ storeUserHandler = (user) => {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-    	<Users onStoreUser={this.storeUserHandler}/>
+        <Users onStoreUser={this.storeUserHandler} />
       </div>
     );
   }

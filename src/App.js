@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Users from './users';
+import UserEntry from './userEntry';
 
 
 /*
@@ -20,8 +20,8 @@ class App extends Component {
   }
 
 
-  storeUserHandler = user => {
-    this.setSate(prevState => ({ users: [...prevState.users, user] })).bind(this)
+  storeUserHandler = (user) => {
+    this.setSate((prevState) => ({ users: [...prevState.users, user] }))
 
   }
 
@@ -32,7 +32,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
-        <Users onStoreUser={this.storeUserHandler} />
+        <UserEntry onStoreUser={this.storeUserHandler} />
       </div>
     );
   }

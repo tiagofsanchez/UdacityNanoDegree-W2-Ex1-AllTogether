@@ -3,13 +3,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 
+const initState = {
+  firstName: '',
+  lastName: '',
+  userName: ''
+}
+
 class UserEntry extends Component {
 
-  state = {
-    firstName: '',
-    lastName: '',
-    userName: ''
-  }
+  state = initState
 
   changeHandler(e, name) {
     this.setState({
@@ -19,14 +21,22 @@ class UserEntry extends Component {
 
   addUserHandler = (e) => {
     e.preventDefault();
-    const { onStoreUser } = this.props
-    
-    console.log("SUBMIT");
-    console.log(this.state);
+    const { onStoreUser } = this.props 
     onStoreUser(this.state) 
+    this.setState(initState)
   }
 
 
+  //this disabled is too long will need to write something cleaner latter
+  isDisabled = () => {
+    const { firstName , lastName , userName } = this.state;
+    if( firstName.length === 0 || lastName.length === 0 || userName.length === 0 ) {
+      return true
+    } else {
+      return false
+    }
+  }
+ 
   render() {
 
     const { firstName, lastName, userName } = this.state
@@ -63,7 +73,7 @@ class UserEntry extends Component {
               onChange={(e, name) => this.changeHandler(e, name)}
             />
           </div>
-          <button>SUBMIT</button>
+          <button disabled={this.isDisabled()}>SUBMIT</button>
         </form>
       </div>
     );

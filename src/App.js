@@ -16,13 +16,12 @@ The instructions for this project are located in the `instructions.md` file.
 class App extends Component {
 
   state = {
-    users: []
+    users: [],
   }
 
-
   storeUserHandler = (user) => {
-    this.setSate((prevState) => ({ users: [...prevState.users, user] }))
-
+    this.setState((prevState) => ({ users: [...prevState.users, user] }))
+    console.log(this.state)
   }
 
   render() {

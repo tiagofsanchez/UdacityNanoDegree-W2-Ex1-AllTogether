@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 const initState = {
   firstName: '',
   lastName: '',
-  userName: ''
+  userName: '', 
+  gamesPlayed: 0, 
 }
 
 class UserEntry extends Component {
@@ -21,29 +22,29 @@ class UserEntry extends Component {
 
   addUserHandler = (e) => {
     e.preventDefault();
-    const { onStoreUser } = this.props 
-    onStoreUser(this.state) 
+    const { onStoreUser } = this.props
+    onStoreUser(this.state)
     this.setState(initState)
   }
 
 
   //this disabled is too long will need to write something cleaner latter
   isDisabled = () => {
-    const { firstName , lastName , userName } = this.state;
-    if( firstName.length === 0 || lastName.length === 0 || userName.length === 0 ) {
+    const { firstName, lastName, userName } = this.state;
+    if (firstName.length === 0 || lastName.length === 0 || userName.length === 0) {
       return true
     } else {
       return false
     }
   }
- 
+
   render() {
 
     const { firstName, lastName, userName } = this.state
     return (
-      <div style={{ display: `flex`, flexDirection: `column`, marginTop: `40px` }}>
-        <form onSubmit={this.addUserHandler}>
-          <div>
+      <form onSubmit={this.addUserHandler}>
+        <div style={{ display: `flex`, flexDirection: `column`, width: `400px`, margin: `auto`, marginTop: `40px`, alignContent: `left` }}>
+          <div style={{display: `flex`, alignItems: `center`, justifyContent: `spaceBetween`}}>
             <label>Your first name:</label>
             <input
               type="text"
@@ -53,7 +54,7 @@ class UserEntry extends Component {
               onChange={(e, name) => this.changeHandler(e, name)}
             />
           </div >
-          <div>
+          <div style={{display: `flex`, alignItems: `center`, justifyContent: `spaceBetween`}}>
             <label>Your last name:</label>
             <input
               type="text"
@@ -63,7 +64,7 @@ class UserEntry extends Component {
               onChange={(e, name) => this.changeHandler(e, name)}
             />
           </div>
-          <div>
+          <div style={{display: `flex`, alignItems: `center`, justifyContent: `spaceBetween`}}>
             <label>User name:</label>
             <input
               type="text"
@@ -74,8 +75,9 @@ class UserEntry extends Component {
             />
           </div>
           <button disabled={this.isDisabled()}>SUBMIT</button>
-        </form>
-      </div>
+
+        </div>
+      </form>
     );
   }
 }

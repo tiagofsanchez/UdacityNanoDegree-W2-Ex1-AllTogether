@@ -14,24 +14,42 @@ class App extends Component {
     users: [],
   }
 
-  storeUserHandler = (user) => {
-    this.setState((prevState) => ({ users: [...prevState.users, user] }))
-  }
 
-  render() {
-    const { users } = this.state;
+  userExist = (userName) => {
+    
+    const allUserNames = this.state.users.map((user) => {
+      const userNames = [];
+      userNames.push(user);
+      return userNames
+    })
 
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">ReactND - Coding Practice</h1>
-        </header>
-        <UserEntry onStoreUser={this.storeUserHandler} />
-        <UserList users={users}/>
-      </div>
-    );
-  }
+    for (let user of allUserNames) {
+      if (user === userName) {
+        return true;
+      }
+    }
+    return false;
+  };
+}
+
+storeUserHandler = (user) => {
+  this.setState((prevState) => ({ users: [...prevState.users, user] }))
+}
+
+render() {
+  const { users } = this.state;
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="App-title">ReactND - Coding Practice</h1>
+      </header>
+      <UserEntry onStoreUser={this.storeUserHandler} />
+      <UserList users={users} />
+    </div>
+  );
+}
 }
 
 

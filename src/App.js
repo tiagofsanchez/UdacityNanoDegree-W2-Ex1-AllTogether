@@ -14,47 +14,31 @@ class App extends Component {
     users: [],
   }
 
-
-  userExist = (userName) => {
-    
-    const allUserNames = this.state.users.map((user) => {
-      const userNames = [];
-      userNames.push(user);
-      return userNames
-    })
-
-    for (let user of allUserNames) {
-      if (user === userName) {
-        return true;
-      }
+    storeUserHandler = (user) => {
+      this.setState((prevState) => ({ users: [...prevState.users, user] }))
     }
-    return false;
-  };
-}
 
-storeUserHandler = (user) => {
-  this.setState((prevState) => ({ users: [...prevState.users, user] }))
-}
+    render() {
+      const { users } = this.state;
 
-render() {
-  const { users } = this.state;
+      return (
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">ReactND - Coding Practice</h1>
+          </header>
+          <UserEntry onStoreUser={this.storeUserHandler} allUsers={users}/>
+          <UserList users={users} />
+        </div>
+      );
+    };
+  }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1 className="App-title">ReactND - Coding Practice</h1>
-      </header>
-      <UserEntry onStoreUser={this.storeUserHandler} />
-      <UserList users={users} />
-    </div>
-  );
-}
-}
 
 
 UserEntry.propTypes = {
-  onStoreUser: PropTypes.func.isRequired
+  onStoreUser: PropTypes.func.isRequired,
+  allUsers: PropTypes.array.isRequired,
 }
 UserList.prototypes = {
   users: PropTypes.array.isRequired

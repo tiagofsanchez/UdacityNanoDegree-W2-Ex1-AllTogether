@@ -45,7 +45,6 @@ class UserList extends Component {
         </button>
         <ul>
           {users.map(user => {
-            console.log(user);
             return (
               <User user={user}  key={user.userName} />
             );

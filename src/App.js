@@ -3,15 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 import UserEntry from './userEntry';
+import UserList from './userList';
 
-
-/*
-This exercise will help you put together and practice all of the concepts you've
-learned thus far. It will also help you form a strong foundational knowledge of
-React and prepare you for your first project.
-
-The instructions for this project are located in the `instructions.md` file.
-*/
 
 class App extends Component {
 
@@ -21,10 +14,11 @@ class App extends Component {
 
   storeUserHandler = (user) => {
     this.setState((prevState) => ({ users: [...prevState.users, user] }))
-    console.log(this.state)
   }
 
   render() {
+    const { users } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
@@ -32,6 +26,7 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <UserEntry onStoreUser={this.storeUserHandler} />
+        <UserList users={users}/>
       </div>
     );
   }

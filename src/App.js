@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
 import UserEntry from './userEntry';
 import UserList from './userList';
+import PropTypes from 'prop-types'
 
 
 class App extends Component {
@@ -33,6 +35,11 @@ class App extends Component {
 }
 
 
-
+UserEntry.propTypes = {
+  onStoreUser: PropTypes.func.isRequired
+}
+UserList.prototypes = {
+  users: PropTypes.array.isRequired
+}
 
 export default App;

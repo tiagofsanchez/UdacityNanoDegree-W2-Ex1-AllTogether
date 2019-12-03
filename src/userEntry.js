@@ -27,7 +27,6 @@ class UserEntry extends Component {
     this.setState(initState)
   }
 
-
   //this disabled is too long will need to write something cleaner latter
   isDisabled = () => {
     const { firstName, lastName, userName } = this.state;
@@ -38,8 +37,7 @@ class UserEntry extends Component {
     }
   }
 
-  render() {
-
+  render() {  
     const { firstName, lastName, userName } = this.state
     return (
       <form onSubmit={this.addUserHandler}>

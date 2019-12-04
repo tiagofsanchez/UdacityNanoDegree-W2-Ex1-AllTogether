@@ -24,9 +24,12 @@ class UserList extends Component {
   */
 
   showGamesHandler = () => {
+    
     this.setState({
       showGames: !this.state.showGames
     });
+
+    console.log(this.props)
   };
 
   render() {
@@ -46,7 +49,7 @@ class UserList extends Component {
         <ul>
           {users.map(user => {
             return (
-              <User user={user}  key={user.userName} />
+              <User user={user}  key={user.userName} showGame={showGames}/>
             );
           })}
         </ul>
@@ -55,7 +58,7 @@ class UserList extends Component {
   }
 }
 
-User.prototypes = {
+UserList.propTypes = {
   user: PropTypes.object.isRequired,
   showGame: PropTypes.bool.isRequired,
 };

@@ -18,7 +18,7 @@ class UserEntry extends Component {
   state = initState
 
   //this is a better way to change state in a non-mutable way
-  changeHandler(e) {
+  changeHandler= (e)=> {
     const { name, value } = e.target;
     this.setState(currState => ({
       ...currState,

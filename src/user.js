@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 
 const User = props => {
   
@@ -13,5 +14,9 @@ const User = props => {
         <li key={user.userName}>{user.userName} played {numberOfGames} number of games!</li>
     );
 };
+
+User.propTypes = { 
+    showGame: PropTypes.bool.isRequired
+}
 
 export default User;
